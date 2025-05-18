@@ -13,7 +13,7 @@ const UpdateCoffee = () => {
     const updateCoffee = Object.fromEntries(formData.entries());
 
     // Send Updated Coffee data to DB
-    fetch(`http://localhost:3000/coffees/${_id}`, {
+    fetch(`https://coffee-store-server-sigma-bice.vercel.app/coffees/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
