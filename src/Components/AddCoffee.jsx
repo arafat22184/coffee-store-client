@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
@@ -18,7 +19,12 @@ const AddCoffee = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("added Successfully");
+          Swal.fire({
+            title: "Coffee added successfully!",
+            icon: "success",
+            draggable: true,
+          });
+          // form.reset()
         }
       });
   };
@@ -77,12 +83,12 @@ const AddCoffee = () => {
           </fieldset>
 
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-            <label className="label">Category</label>
+            <label className="label">Price</label>
             <input
               type="text"
-              name="category"
+              name="price"
               className="input w-full"
-              placeholder="Category Name"
+              placeholder="Price per cup"
             />
           </fieldset>
 
