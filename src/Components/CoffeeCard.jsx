@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, photo, name, price, quantity } = coffee;
 
   const handleDelete = (id) => {
@@ -27,6 +27,10 @@ const CoffeeCard = ({ coffee }) => {
                 text: "Your Coffee has been deleted.",
                 icon: "success",
               });
+
+              // Remove the coffee from the state
+              const remainingCoffees = coffees.filter((cof) => cof._id !== id);
+              setCoffees(remainingCoffees);
             }
           });
       }
@@ -49,7 +53,9 @@ const CoffeeCard = ({ coffee }) => {
             <Link to={`/coffee/${_id}`} className="btn join-item">
               View Details
             </Link>
-            <button className="btn join-item">Edit</button>
+            <Link to={`/updateCoffee/${_id}`} className="btn join-item">
+              Edit
+            </Link>
             <button onClick={() => handleDelete(_id)} className="btn join-item">
               Delete
             </button>
